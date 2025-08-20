@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon --watch src --ext ts,tsx --exec tsx src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "node index.js",
     "migrate": "prisma migrate dev"
   },
   "author": "",
