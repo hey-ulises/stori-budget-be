@@ -1,10 +1,13 @@
 import express from "express";
+import categoryRoutes from "./routes/categoryRoutes.js";
+import transactionsRoutes from "./routes/transactionsRoutes.js";
+import kpiRoutes from "./routes/kpiRoutes.js";
 
 const app = express();
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-});
+app.use("/categories", categoryRoutes);
+app.use("/transactions", transactionsRoutes);
+app.use("/kpis", kpiRoutes);
 
 export default app;
