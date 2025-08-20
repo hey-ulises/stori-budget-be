@@ -37,27 +37,27 @@ categoryRoutes.get("/:id", async (req, res) => {
 
 // Create category
 categoryRoutes.post("/", async (req, res) => {
-  const { name, type } = req.body;
-  const newCategory = await prisma.category.create({ data: { name, type } });
-  res.status(201).json(newCategory);
+    const { name, type } = req.body;
+    const newCategory = await prisma.category.create({ data: { name, type } });
+    res.status(201).json(newCategory);
 });
 
 // Update category
 categoryRoutes.put("/:id", async (req, res) => {
-  const id = Number(req.params.id);
-  const { name, type } = req.body;
-  const updatedCategory = await prisma.category.update({
-    where: { id },
-    data: { name, type },
-  });
-  res.json(updatedCategory);
+    const id = Number(req.params.id);
+    const { name, type } = req.body;
+    const updatedCategory = await prisma.category.update({
+        where: { id },
+        data: { name, type },
+    });
+    res.json(updatedCategory);
 });
 
 // Delete category
 categoryRoutes.delete("/:id", async (req, res) => {
-  const id = Number(req.params.id);
-  await prisma.category.delete({ where: { id } });
-  res.status(204).send();
+    const id = Number(req.params.id);
+    await prisma.category.delete({ where: { id } });
+    res.status(204).send();
 });
 
 export default categoryRoutes;
