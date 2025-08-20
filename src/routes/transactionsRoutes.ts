@@ -7,6 +7,9 @@ const transactionsRoutes = Router();
 transactionsRoutes.get("/", async (req, res) => {
   const transactions = await prisma.transaction.findMany({
     include: { category: true },
+    orderBy: {
+        date: "desc",
+    },
   });
   res.json(transactions);
 });
