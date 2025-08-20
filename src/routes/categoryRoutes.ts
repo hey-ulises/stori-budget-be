@@ -5,8 +5,24 @@ const categoryRoutes = Router();
 
 // Get all categories
 categoryRoutes.get("/", async (req, res) => {
-  const categories = await prisma.category.findMany();
-  res.json(categories);
+    // Date should be today, but since the data provided stops at 2024-10-29, Im using that date
+    const now = new Date("2024-10-29");
+    const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    const firstDayOfNextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+
+    const categories = await prisma.category.findMany({
+      include: {
+        transactions: {
+          where: {
+            date: {
+              gte: firstDayOfMonth,
+              lt: firstDayOfNextMonth,
+            },
+          },
+        },
+      },
+    });
+    res.json(categories);
 });
 
 // Get category by id
@@ -14,7 +30,7 @@ categoryRoutes.get("/:id", async (req, res) => {
     const id = Number(req.params.id);
     const category = await prisma.category.findUnique({
         where: { id },
-        include: { transactions: true }, 
+        include: { transactions: true },
     });
     res.json(category);
 });
