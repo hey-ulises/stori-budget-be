@@ -30,7 +30,7 @@ adviceRoutes.get("/", async (req, res) => {
     You are a financial assistant. Analyze the following user transactions from the last two months.
     Compare the previous month with the current one, focusing on expenses vs. income.
     Provide a short, clear, and actionable financial recommendation to help the user save money or manage it better.
-    Limit yourself to 35 words or less. Go straight to the advice, do not summarize the data.
+    Limit yourself to 50 words or less. Go straight to the advice, do not summarize the data.
     Data: ${JSON.stringify(transactions)}
     `;
 
