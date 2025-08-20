@@ -31,7 +31,7 @@ async function main() {
             date: new Date(t.date),
             amount: t.amount,
             description: t.description,
-            categoryId: categoryMap[t.category],
+            categoryId: categoryMap[t.category]!,
         },
         });
     }
