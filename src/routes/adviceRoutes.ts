@@ -40,12 +40,12 @@ adviceRoutes.get("/", async (req, res) => {
       temperature: 0.7,
     });
 
-    const recommendation = completion.choices[0]?.message?.content || "No recommendation available.";
+    const advice = completion.choices[0]?.message?.content || "No advice available.";
 
-    res.json({ recommendation });
+    res.json({ advice });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Failed to generate recommendation" });
+    res.status(500).json({ error: "Failed to generate advice" });
   }
 });
 
